@@ -7,7 +7,7 @@ import jakarta.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "CANDIDATOS", schema = "SYSTEM")
+@Table(name = "CANDIDATO", schema = "INTER1")
 public class Candidato {
     @Id
     @Column(name = "USUARIO")
@@ -20,7 +20,7 @@ public class Candidato {
     private Date fechaNac;
     @Column(name = "NDOC")
     private Long nDoc;
-    @Column(name = "TIPODOC")
+    @Column(name = "IDTIPODOC")
     private String tipoDoc;
     
 	public String getUsuario() {

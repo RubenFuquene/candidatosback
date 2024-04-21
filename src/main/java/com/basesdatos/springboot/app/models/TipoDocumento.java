@@ -6,12 +6,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "TIPOSDOC", schema = "SYSTEM")
+@Table(name = "TIPODOC", schema = "INTER1")
 public class TipoDocumento {
     @Id
     @Column(name = "IDTIPODOC")
     private String idTipoDoc;
-    @Column(name = "DESCTIPODOC") 
+    @Column(name = "DESTIPODOC") 
     private String descTipoDoc;
     
 	public String getIdTipoDoc() {

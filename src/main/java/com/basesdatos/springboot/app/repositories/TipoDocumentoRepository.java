@@ -10,6 +10,6 @@ import java.util.List;
 public interface TipoDocumentoRepository extends JpaRepository<TipoDocumento, String> {
 
     // Método para devolver todos los tipos de documento
-    @Query(value = "SELECT * FROM TIPOSDOC", nativeQuery = true)
+    @Query(value = "SELECT * FROM TIPODOC", nativeQuery = true)
     List<TipoDocumento> findAllTiposDocumento();
 }

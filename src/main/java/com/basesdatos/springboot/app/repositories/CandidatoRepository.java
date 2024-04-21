@@ -12,11 +12,11 @@ import java.util.List;
 public interface CandidatoRepository extends JpaRepository<Candidato, String> {
 
     // Método para traer todos los candidatos
-    @Query(value = "SELECT * FROM CANDIDATOS", nativeQuery = true)
+    @Query(value = "SELECT * FROM CANDIDATO", nativeQuery = true)
     List<Candidato> findAllCandidatos();
 
     // Método para insertar un candidato
     @Transactional
-    @Query(value = "INSERT INTO CANDIDATOS (usuario, nombre, apellido, fechaNac, nDoc, tipoDoc) VALUES (?1, ?2, ?3, ?4, ?5, ?6)", nativeQuery = true)
+    @Query(value = "INSERT INTO CANDIDATO (usuario, nombre, apellido, fechaNac, nDoc, idtipoDoc) VALUES (?1, ?2, ?3, ?4, ?5, ?6)", nativeQuery = true)
     Candidato insertCandidato(String usuario, String nombre, String apellido, Date fechaNac, Long nDoc, String tipoDoc);
 }
