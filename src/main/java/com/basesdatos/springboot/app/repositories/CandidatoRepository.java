@@ -19,4 +19,6 @@ public interface CandidatoRepository extends JpaRepository<Candidato, String> {
     @Transactional
     @Query(value = "INSERT INTO CANDIDATO (usuario, nombre, apellido, fechaNac, nDoc, idtipoDoc) VALUES (?1, ?2, ?3, ?4, ?5, ?6)", nativeQuery = true)
     Candidato insertCandidato(String usuario, String nombre, String apellido, Date fechaNac, Long nDoc, String tipoDoc);
+    
+    boolean existsByUsuario(String usuario);
 }

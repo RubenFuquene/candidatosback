@@ -1,6 +1,8 @@
 package com.basesdatos.springboot.app.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.basesdatos.springboot.app.controllers.requests.CandidatoRequest;
@@ -25,7 +27,7 @@ public class CandidatoController {
 
     // Endpoint para agregar un nuevo candidato
     @PostMapping
-    public Candidato addCandidato(@RequestBody CandidatoRequest request) {
+    public ResponseEntity<?> addCandidato(@RequestBody CandidatoRequest request) {
     	Candidato candidato = new Candidato();
         candidato.setUsuario(request.getUsuario());
         candidato.setNombre(request.getNombre());
@@ -34,6 +36,12 @@ public class CandidatoController {
         candidato.setnDoc(request.getnDoc());
         candidato.setTipoDoc(request.getTipoDoc());
         
-        return candidatoRepository.save(candidato);
+        // Verificar si el usuario ya existe
+        if (candidatoRepository.existsByUsuario(candidato.getUsuario())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("El usuario ya existe");
+        }
+        
+        candidatoRepository.save(candidato);
+        return ResponseEntity.ok("Candidato insertado exitosamente");
     }
 }
